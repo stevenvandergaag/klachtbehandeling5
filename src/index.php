@@ -27,7 +27,7 @@ use PHPMailer\PHPMailer\PHPMailer;
     <label for="onderwerp">Onderwerp</label>
     <input type="text" id="onderwerp" name="onderwerp" placeholder="onderwerp"><br>
     <p>Je klacht</p>
-    <textarea id="klacht" rows="4"></textarea><br>
+    <textarea name="klacht" id="klacht" rows="4"></textarea><br>
     <input type="submit" value="submit">
 
 
@@ -54,9 +54,7 @@ if (isset($_POST['email'])) {
     $mail->isHTML(true);
     $mail->From = "Lucasdh2003@gmail.com";
     $mail->FromName = "LDH-support";
-
-    $message = "Dankuwel voor uw mail we zullen uw binnenkort contacten";
-    $mail->msgHTML($message);
+    $mail->msgHTML($klacht);
     $mail->addAddress($email);
     $mail->AddCC("40188047@roctilburg.nl");
     if (!$mail->send()) {
